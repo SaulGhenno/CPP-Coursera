@@ -3,7 +3,10 @@
 #include <ctime>
 #include <random>
 
+#include "node.cpp"
 #include "graph.cpp"
+#include "priorityqueue.cpp"
+#include "kruskal.cpp"
 
 using namespace std;
 
@@ -16,4 +19,10 @@ int main()
     // printing the original graph
     cout << "<<<<<<<Original graph>>>>>>>" << endl;
     a.print();
+
+    priorityqueue pq(&a);
+    //pq.printQueue();
+
+    kruskal value(&pq,&a);
+    value.findTreeValue();
 }
