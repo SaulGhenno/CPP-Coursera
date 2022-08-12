@@ -1,21 +1,16 @@
 
-#include "hexBoard.cpp"
+#include "AI.cpp"
 
 using namespace std;
 
-void play(int SIZE, int turn, int x, int y, hexBoard board)
+void play(int SIZE, int turn, int x, int y, hexBoard board, Game t)
 {
     while (true)
     {
         turn = !turn;
         if (turn == 1)
         {
-            do
-            {
-                x = rand() % SIZE;
-                y = rand() % SIZE;
-            } while (!board.makeAMove(x, y, player::WHITE));
-            cout << "Player White move: (" << x + 1 << ", " << y + 1 << ")" << endl;
+            t.computerTurn();
         }
         else
         {
@@ -51,10 +46,12 @@ int main()
     cin >> SIZE;
 
     hexBoard board(SIZE);
+    AI ai;
+    Game hexGame(ai);
     board.printBoard();
 
     //start game
-    play(SIZE, turn, x, y, board);
+    play(SIZE, turn, x, y, board, hexGame);
 
     return 0;
 }

@@ -1,2 +1,3 @@
 #Ignoring all .exe files
 *.exe
+*.zip

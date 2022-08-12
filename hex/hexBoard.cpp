@@ -70,6 +70,28 @@ void hexBoard::checkBorders(int x, int y, vector<bool> &flags, char turn)
     }
 }
 
+vector<pair<int, int>> hexBoard::emptySlots()
+{
+    vector<pair<int, int>> emptyCells;
+    for(int i = 0; i < size; ++i)
+    {
+        for(int j = 0; j < size; ++j)
+            if(board[i][j] == empty)
+                emptyCells.push_back(make_pair(i, j));
+    }
+    return emptyCells;
+}
+
+bool hexBoard::badMove(int x, int y)
+{
+    if(validMove(x,y))
+    {
+        board[x][y] = empty;
+        return true;
+    }
+    return false;
+}
+
 bool hexBoard::win(int x, int y)
 {
     if (validMove(x, y) == false || board[x][y] == empty)
